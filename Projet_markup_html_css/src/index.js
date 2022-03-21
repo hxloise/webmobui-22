@@ -1,5 +1,6 @@
 import './css/index.css'
 import { afficherArtistes } from './artistes.js';
+import { afficherChansonsArtiste } from './songs.js';
 
 window.location.hash = 'home'
 
@@ -31,9 +32,12 @@ const displaySection = () => {
   switch (hashSplite[0]) {
     case "#artists":
       // est-ce que le deuxième élément retourne quelque chose ? Et donc n’est pas undefined ? Oui?
-      // Alors il y a un id et on affiche cet artiste
+      // Alors il y a un id et on affiche les musiques de cet artiste
       if (hashSplite[1]) {
+        //donner l'id récupéré à la fonction
         afficherChansonsArtiste(hashSplite[1])
+        //par défault la section est display:none. Cette fonction permet d'ajouter l'attribut active
+        toggleSection("#songs")
       }
       else {
         afficherArtistes()
@@ -47,3 +51,4 @@ window.addEventListener('hashchange', displaySection)
 // Affichage au chargement
 displaySection()
 afficherArtistes()
+
